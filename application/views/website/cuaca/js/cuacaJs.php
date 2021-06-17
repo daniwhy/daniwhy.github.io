@@ -88,8 +88,8 @@ var kodeCuaca = {
 	        });
 	    },
     	onEachFeature: function(feature,layer){
-    		 if (feature.properties && feature.properties.name) {
-		        layer.bindPopup(feature.properties.popUp);
+    		 if (feature.popUp && feature.popUp) {
+		        layer.bindPopup(feature.popUp.popUp);
 		    }
     	}
 	}).addTo(map);
@@ -102,8 +102,8 @@ var kodeCuaca = {
 	        });
 	    },
     	onEachFeature: function(feature,layer){
-    		 if (feature.properties && feature.properties.name) {
-		        layer.bindPopup(feature.properties.popUp);
+    		 if (feature.popUp && feature.popUp) {
+		        layer.bindPopup(feature.popUp.popUp);
 		    }
     	}
 	}).addTo(map);
