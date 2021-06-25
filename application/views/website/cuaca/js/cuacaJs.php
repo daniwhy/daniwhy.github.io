@@ -31,13 +31,14 @@ var markersLayers = new L.LayerGroup();
 
 L.control.layers(baseLayers).addTo(map);
 var kodeCuaca = {
-	'0':['Cerah','clearskies.png'],
-	'3':['Berawan ','mostlycloudy.png'],
-	'60':['Hujan Ringan','lightrain.png'],
-	'61':['Hujan Sedang','rain.png'],
-	'63':['Hujan Lebat','heavyrain.png'],
+	'1':['clearskies.png'],
+	'2':['mostlycloudy.png'],
+	'3':['lightrain.png'],
+	'4':['rain.png'],
+	'5':['heavyrain.png'],
 
 };
+
 	function getColor(d) {
 		return d > 1000 ? '#800026' :
 				d > 500  ? '#BD0026' :
@@ -48,29 +49,15 @@ var kodeCuaca = {
 				d > 10   ? '#FED976' :
 							'#FFEDA0';
 	}
-	var iconUrl = 'assets/icons/'+kodeCuaca[63][1];
-	var iconUrl1 = 'assets/icons/'+kodeCuaca[63][1];
-	var iconUrl2 = 'assets/icons/'+kodeCuaca[63][1];
-	var myicon = L.icon ({
-		    iconUrl: iconUrl,
-		    iconSize: [100, 100],
-		    iconAnchor: [50, 50]
-	        })
-	var myicon1 = L.icon ({
-		    iconUrl: iconUrl1,
-		    iconSize: [100, 100],
-		    iconAnchor: [50, 50]
-	        })
-	var myicon2= L.icon ({
-		    iconUrl: iconUrl2,
-		    iconSize: [100, 100],
-		    iconAnchor: [50, 50]
-	        })
-	
+	markersLayers.clearLayers()
 	L.geoJSON(data1,{
-		pointToLayer: function (feature, latlng) {
+		pointToLayer: function (feature, latlng, kategori) {
 	    	console.log(feature)
-	        return L.marker(latlng, {icon: myicon
+	        return marker=L.marker(latlng, {icon: L.icon ({
+		    iconUrl:'assets/icons/'+kodeCuaca[(feature.kategori.kategori)],
+		    iconSize: [100, 100],
+		    iconAnchor: [50, 50]
+	        })
 		});
 	    },
     	onEachFeature: function(feature,layer){
@@ -78,12 +65,18 @@ var kodeCuaca = {
 		        layer.bindPopup(feature.popUp.popUp);
 		    }
     	}
-	}).addTo(map);
+	})
+	marker.addTo(markersLayers);
+		markersLayers.addTo(map);
 
 	L.geoJSON(data2,{
-		pointToLayer: function (feature, latlng) {
-	    	console.log(feature)
-	        return L.marker(latlng, {icon: myicon1
+		pointToLayer: function (feature, latlng, kategori) {
+	    	//console.log(feature)
+	        return marker=L.marker(latlng, {icon:L.icon ({
+		    iconUrl: 'assets/icons/'+kodeCuaca[(feature.kategori.kategori)],
+		    iconSize: [100, 100],
+		    iconAnchor: [50, 50]
+	        })
 	        	
 	        });
 	    },
@@ -92,12 +85,19 @@ var kodeCuaca = {
 		        layer.bindPopup(feature.popUp.popUp);
 		    }
     	}
-	}).addTo(map);
+		
+	})
+	marker.addTo(markersLayers);
+		markersLayers.addTo(map);
 
 	L.geoJSON(data3,{
-		pointToLayer: function (feature, latlng) {
-	    	console.log(feature)
-	        return L.marker(latlng, {icon: myicon2
+		pointToLayer: function (feature, latlng, kategori) {
+	    	//console.log(feature)
+	        return marker=L.marker(latlng, {icon: L.icon ({
+		    iconUrl: 'assets/icons/'+kodeCuaca[(feature.kategori.kategori)],
+		    iconSize: [100, 100],
+		    iconAnchor: [50, 50]
+	        })
 	        	
 	        });
 	    },
@@ -106,7 +106,9 @@ var kodeCuaca = {
 		        layer.bindPopup(feature.popUp.popUp);
 		    }
     	}
-	}).addTo(map);
+	})
+	marker.addTo(markersLayers);
+		markersLayers.addTo(map);
 
 	var legend = L.control({position: 'bottomright'});
 

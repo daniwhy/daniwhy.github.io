@@ -106,12 +106,35 @@ class Api2 extends CI_Controller {
 										"yy"=>$yn = $y*100,];
 
 										if($yn>=0.5){
-											$klas = "hujan";
-										}
-										else {$klas = "Tidak Hujan";
-										}
+													
+											if($row->hujan>=1 && $row->hujan<=5){
+													$kode = 2;
+													$klas = "Hujan Ringan";
+											}
+											elseif ($row->hujan>5 && $row->hujan<=10){
+												$kode = 3;
+												$klas = "Hujan Sedang";
+											}
+											elseif ($row->hujan>10 && $row->hujan<=20){
+												$kode = 4;
+												$klas = "Hujan Lebat";
+											}
+											elseif ($row->hujan>20){
+												$kode = 5;
+												$klas = "Hujan Ekstrim";
+											}
+											}
+											
+											if($yn<0.5){
+											if ($row->hujan==0){
+												$kode = 1;
+												$klas = "Cerah";
+											}}
+				$data['kategori']=[
+										"kategori"=>$kode
+									];
 				$data['popUp']=[
-										"popUp"=>"ID AWS : ".$row->id_aws.",<br>Latitude. ".$row->Latitude.",<br>Longitude. ".$row->Longitude."<br>Waktu : $row->time WIB"."<br>Hujan :".$klas."<br>Suhu : $row->suhu C"."<br>Kelembaban : $row->kelembaban %"
+										"popUp"=>"<strong> KEC. GUBENG </strong>"."<br>"."<br>Waktu : $row->time WIB"."<br>Cuaca :".$klas."<br>Suhu : $row->suhu C"."<br>Kelembaban : $row->kelembaban %"
 									];
 										
 				$data['geometry']=[
@@ -127,3 +150,4 @@ class Api2 extends CI_Controller {
 		
 	}
 }
+?>
