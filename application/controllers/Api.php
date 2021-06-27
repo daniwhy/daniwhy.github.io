@@ -112,26 +112,26 @@ class Api extends CI_Controller {
 													
 												if($row->hujan>=1 && $row->hujan<=5){
 														$kode = 2;
-														$klas = "Hujan Ringan";
+														$klas = "BERAWAN";
 												}
 												elseif ($row->hujan>5 && $row->hujan<=10){
 													$kode = 3;
-													$klas = "Hujan Sedang";
+													$klas = "HUJAN RINGAN";
 												}
 												elseif ($row->hujan>10 && $row->hujan<=20){
 													$kode = 4;
-													$klas = "Hujan Lebat";
+													$klas = "HUJAN SEDANG";
 												}
 												elseif ($row->hujan>20){
 													$kode = 5;
-													$klas = "Hujan Ekstrim";
+													$klas = "HUJAN LEBAT";
 												}
 												}
 												
 												if($yn<0.5){
 												if ($row->hujan==0){
 													$kode = 1;
-													$klas = "Cerah";
+													$klas = "CERAH";
 												}}
 												
 					$data['kategori']=[
@@ -139,7 +139,7 @@ class Api extends CI_Controller {
 											];
 				
 					$data['popUp']=[			
-												"popUp"=>"<strong> KEC. SUKOLILO </strong>"."<br>"."<br>Waktu : $row->time WIB"."<br>Cuaca :".$klas."<br>Suhu : $row->suhu C"."<br>Kelembaban : $row->kelembaban %"
+												"popUp"=>"<strong> KEC. SUKOLILO </strong>"."<br>Waktu : $row->time WIB"."<br>Suhu : $row->suhu C"."<br>Kelembaban : $row->kelembaban %"."<br>"."<br>"."<strong> PREDIKSI </strong>"."<br>"."<strong> CUACA 3 JAM KEDEPAN </strong>"."<br>"."<br><strong>$klas</strong>"
 											];
 												
 					$data['geometry']=[

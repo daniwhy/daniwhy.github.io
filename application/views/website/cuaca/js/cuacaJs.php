@@ -17,7 +17,7 @@ var light   = L.tileLayer(mbUrl, {id: 'mapbox/light-v9', tileSize: 512, zoomOffs
 var dark = L.tileLayer(mbUrl, {id: 'mapbox/dark-v9', tileSize: 512, zoomOffset: -1, attribution: mbAttr});
 var markersLayers = new L.LayerGroup();
 
-   	var map = L.map('map',{layers:light}).setView([-7.2758983,112.7497418], 13);
+   	var map = L.map('map',{layers:dark}).setView([-7.2718983,112.7497418], 12.5);
 	var myStyle2 = {
 	    "color": "#ffff00",
 	    "weight": 1,

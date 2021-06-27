@@ -8,7 +8,7 @@
 
    <script type="text/javascript"> 
 
-   	var map = L.map('map').setView([-7.2618983,112.7497418], 12);
+   	var map = L.map('map').setView([-7.2858983,112.7497418], 12);
 
        var Layer=L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 	    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
