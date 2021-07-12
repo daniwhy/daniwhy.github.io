@@ -18,7 +18,6 @@ class Api extends CI_Controller {
 					$this->db->where('a.data1',$id);
 				}
 				
-
 				$getHotspot=$this->data1Models->get();
 				foreach ($getHotspot->result() as $row) {
 					$data=null;
@@ -104,10 +103,11 @@ class Api extends CI_Controller {
 												
 												//Y Output
 												"Y'"=>$y = 1 / (1 + exp(-1 * $zzz)),
-
+												
 												//Y denormalisasi
 												"yy"=>$yn = $y*100,];
 
+												
 												if($yn>=0.5){
 													
 												if($row->hujan>=1 && $row->hujan<=5){
@@ -125,18 +125,18 @@ class Api extends CI_Controller {
 												elseif ($row->hujan>20){
 													$kode = 5;
 													$klas = "HUJAN LEBAT";
+													}
 												}
-												}
-												
 												if($yn<0.5){
 												if ($row->hujan==0){
 													$kode = 1;
 													$klas = "CERAH";
-												}}
+													}
+												}
 												
 					$data['kategori']=[
-												"kategori"=>$kode
-											];
+												"kategori"=>$kode,
+											];					
 				
 					$data['popUp']=[			
 												"popUp"=>"<strong> KEC. SUKOLILO </strong>"."<br>Waktu : $row->time WIB"."<br>Suhu : $row->suhu C"."<br>Kelembaban : $row->kelembaban %"."<br>"."<br>"."<strong> PREDIKSI </strong>"."<br>"."<strong> CUACA 3 JAM KEDEPAN </strong>"."<br>"."<br><strong>$klas</strong>"
@@ -151,11 +151,11 @@ class Api extends CI_Controller {
 				echo 'var data1 ='.json_encode($response,JSON_PRETTY_PRINT);	
 											
 			}
+
 			
 		}
 		
 	}
-	
 }
 ?>
 

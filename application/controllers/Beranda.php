@@ -8,6 +8,7 @@ class Beranda  extends CI_Controller {
 	$this->load->model('data1Models','Model');
 	$this->load->model('data2Models','Model');
 	$this->load->model('data3Models','Model');
+	
 	}
 
 	public function index()
@@ -16,7 +17,7 @@ class Beranda  extends CI_Controller {
 		$datacontent['title']='Beranda';
 		$data['title']='Selamat Datang';
 		$datacontent['datatable']=$this->Model->get();
-		$data['content']=$this->load->view('website/cuaca/view',$datacontent,TRUE);
+		$data['content']=$this->load->view('website/layouts/view',$datacontent,TRUE);
 		$data['js']=$this->load->view('website/cuaca/js/cuacaJs',$datacontent,TRUE);
 		$this->load->view('website/layouts/html.php',$data);
 	}
@@ -80,5 +81,59 @@ class Beranda  extends CI_Controller {
 			echo "Variabel data tidak terdefinisi";
 		}
 	}
+	public function bacaperintah(){
+		$this->load->model('perintahModels');
 
+		$data = $this->perintahModels->ambildataperintah();
+
+		foreach ($data as $key => $value) {
+			if ($value->data == 5){
+				echo "ON";
+			}
+			else 
+				echo "OFF";
+		}
+	}
+	  public function autosave()
+	  {
+	  	$this->load->model('perintahModels');
+	  	if($this->input->post()){
+	 		$perintah=[
+	  			//'id_perintah'=>$this->input->post('id_perintah'),
+	  			'data'=>$this->input->post('data'),
+	  		];
+	  			$this->perintahModels->update($perintah,['id_perintah'=>$this->input->post('id_perintah')]);
+				 
+	  		}
+	  		redirect();
+	  		var_dump($perintah);
+	}
+	//  function autosave(){
+	// 	$this->load->model('perintahModels');
+
+	// 	var title = $('#postTitle').val().trim();
+	   
+	// 	if(title != ''){
+	// 	 // AJAX request
+	// 	 $.ajax({
+	// 	  url: "beranda/autosave",
+	// 	  type: 'post',
+	// 	  data: {postid:postid,title:title,content:content},
+	// 	  success: function(response){
+	// 	   $('#postid').val(response);
+	// 	  } 
+	// 	 });
+	// 	} 
+	//    }
+	// public function autosave($action='',$data=''){
+	// 	$this->load->model('perintahModels');
+	// 	$this->load->view('website/layouts/view');
+	// 	$datacontent['data']=$data;
+	// 	$datacontent['action']=$action;
+	// 	$data = array('data'=>$this->input->post('data'));
+    //     $where = array('id_perintah' => $this->input->post('id_perintah'));
+	// 	$this->perintahModels->update('data', $data, $where);
+	// 	var_dump($data);
+	// }
 }
+	

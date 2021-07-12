@@ -4,6 +4,7 @@
 
  <script src="<?=base_url('assets/js/leaflet-panel-layers-master/src/leaflet-panel-layers.js')?>"  ></script>
  <script src="<?=base_url('assets/js/leaflet.ajax.js')?>"></script>
+ <script src="<?=base_url('assets/jquery-3.1.1.min.js')?>"></script>
  <script src="<?=site_url('api/data/data1/point')?>"></script>
  <script src="<?=site_url('api1/data/data2/point')?>"></script>
  <script src="<?=site_url('api2/data/data3/point')?>"></script>
@@ -17,6 +18,7 @@ var light   = L.tileLayer(mbUrl, {id: 'mapbox/light-v9', tileSize: 512, zoomOffs
 var dark = L.tileLayer(mbUrl, {id: 'mapbox/dark-v9', tileSize: 512, zoomOffset: -1, attribution: mbAttr});
 var markersLayers = new L.LayerGroup();
 
+	var kode1=document.querySelector("[name=data]");
    	var map = L.map('map',{layers:dark}).setView([-7.2718983,112.7497418], 12.5);
 	var myStyle2 = {
 	    "color": "#ffff00",
@@ -37,6 +39,7 @@ var kodeCuaca = {
 	'4':['rain.png'],
 	'5':['heavyrain.png'],
 
+
 };
 
 	function getColor(d) {
@@ -49,21 +52,27 @@ var kodeCuaca = {
 				d > 10   ? '#FED976' :
 							'#FFEDA0';
 	}
+	
 	markersLayers.clearLayers()
 	L.geoJSON(data1,{
 		pointToLayer: function (feature, latlng, kategori) {
-	    	console.log(feature)
+	    	//console.log(feature)
+			console.log(feature.kategori.kategori);
+			kode1.value=feature.kategori.kategori;
 	        return marker=L.marker(latlng, {icon: L.icon ({
 		    iconUrl:'assets/icons/'+kodeCuaca[(feature.kategori.kategori)],
+			
 		    iconSize: [100, 100],
 		    iconAnchor: [50, 50]
 	        })
 		});
 	    },
     	onEachFeature: function(feature,layer){
+			
     		 if (feature.popUp && feature.popUp) {
 		        layer.bindPopup(feature.popUp.popUp);
-		    }
+
+			}
     	}
 	})
 	marker.addTo(markersLayers);

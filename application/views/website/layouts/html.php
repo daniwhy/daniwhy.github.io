@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-	<?php include 'head.php'?>
+<?php include 'head.php'?>
+	<?php include 'view.php'?>
 	  	<?php include 'body.php';?>
 	<?php
 		if(isset($js)){
