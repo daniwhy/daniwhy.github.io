@@ -5,16 +5,16 @@ class PerintahModels extends CI_Model
 	
 	function ambildataperintah(){
 		$this->db->select('*');
-		$this->db->from('perintah');
-		$this->db->where('id_perintah',1);
+		$this->db->from('dataperintah');
+		$this->db->where('id_perintah',0);
 		$query = $this->db->get();
 		if ($query->num_rows()>0) {
 			return $query->result();
 		}
 	}
-	function update($data=array(),$where=array()){
+	function update($dataperintah=array(),$where=array()){
 		
-		$this->db->update('perintah',$data);
+		$this->db->update('dataperintah',$dataperintah);
 	}
 	
 }

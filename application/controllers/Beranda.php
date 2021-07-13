@@ -84,56 +84,30 @@ class Beranda  extends CI_Controller {
 	public function bacaperintah(){
 		$this->load->model('perintahModels');
 
-		$data = $this->perintahModels->ambildataperintah();
+		$dataperintah = $this->perintahModels->ambildataperintah();
 
-		foreach ($data as $key => $value) {
-			if ($value->data == 5){
+		foreach ($dataperintah as $key => $value) {
+			if ($value->dataperintah == 5){
 				echo "ON";
 			}
 			else 
 				echo "OFF";
+			}
 		}
-	}
-	  public function autosave()
+	
+	public function autosave()
 	  {
 	  	$this->load->model('perintahModels');
 	  	if($this->input->post()){
-	 		$perintah=[
-	  			//'id_perintah'=>$this->input->post('id_perintah'),
-	  			'data'=>$this->input->post('data'),
+	 		$dataperintah=[
+	  			'id_perintah'=>$this->input->post('id_perintah'),
+	  			'dataperintah'=>$this->input->post('dataperintah'),
 	  		];
-	  			$this->perintahModels->update($perintah,['id_perintah'=>$this->input->post('id_perintah')]);
+	  			$this->perintahModels->update($dataperintah,['id_perintah'=>$this->input->post('id_perintah')]);
 				 
 	  		}
 	  		redirect();
-	  		var_dump($perintah);
+	  		var_dump($dataperintah);
 	}
-	//  function autosave(){
-	// 	$this->load->model('perintahModels');
-
-	// 	var title = $('#postTitle').val().trim();
-	   
-	// 	if(title != ''){
-	// 	 // AJAX request
-	// 	 $.ajax({
-	// 	  url: "beranda/autosave",
-	// 	  type: 'post',
-	// 	  data: {postid:postid,title:title,content:content},
-	// 	  success: function(response){
-	// 	   $('#postid').val(response);
-	// 	  } 
-	// 	 });
-	// 	} 
-	//    }
-	// public function autosave($action='',$data=''){
-	// 	$this->load->model('perintahModels');
-	// 	$this->load->view('website/layouts/view');
-	// 	$datacontent['data']=$data;
-	// 	$datacontent['action']=$action;
-	// 	$data = array('data'=>$this->input->post('data'));
-    //     $where = array('id_perintah' => $this->input->post('id_perintah'));
-	// 	$this->perintahModels->update('data', $data, $where);
-	// 	var_dump($data);
-	// }
 }
 	

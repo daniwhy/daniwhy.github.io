@@ -1,6 +1,36 @@
 <div id="map"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
-		<!--
+		function autoSave()
+	{
+		var dataperintah = document.getElementById('dataperintah').value;
+		var id_perintah = document.getElementById('id_perintah').value;
+		if(id_perintah!='')
+		{
+			$.ajax({
+				url:'beranda/autosave',
+				method:"post",
+				data:{dataperintah : dataperintah,id_perintah : id_perintah},
+				success:function(response)
+				{
+					if(response!='')
+					{
+					document.getElementById('id_perintah').value=response;
+					document.getElementById('dataperintah').value=response;	
+					}
+					document.getElementById('autoSave').innerHTML="Notes  Saved.";
+				
+				}
+			});
+		}
+	}
+	setInterval(function(){
+		autoSave();
+	},10000);
+		setInterval(function(){
+						document.getElementById('autoSave').innerHTML="";
+					},35000);
+
 		function showTime() {
 		    var a_p = "";
 		    var today = new Date();
@@ -31,38 +61,4 @@
 		    return i;
 		}
 		setInterval(showTime, 500);
-		</script>
- <?php
-$id_perintah="";
-$perintah="";
-?>
-    <form method="post" action="<?= site_url('beranda/autosave'); ?>">
-	
-		<script>
-
-var s;
-function timePicker(vr) {
-    if (vr > 0) {
-         if (vr > 1) {
-             $('#timer').html('Data will be updated in next '+ vr+' secounds');
-         } else {
-             $('#timer').html('Data will be updated in next 1 secound');
-         }
-         vr--;
-         s = setTimeout('timePicker(' + vr + ')', 1000);
-     } else {
-         clearInterval(s);
-         $.ajax({
-             type: 'post',
-             url: '<?= site_url('beranda/autosave'); ?>',
-             data: $('').serialize(),
-             success: function (data) {
-                 s = setTimeout('timePicker(' + 10 + ')', 5000);
-                 return false;
-             }
-         });
-     }
- }
-</script>
-		
 </script>

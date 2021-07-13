@@ -26,11 +26,19 @@
           </div> 
         </div>
       </nav>
-      <div class="row" onChange="this.form.submit()">
-      <div class="col-md-1">
-            <?=input_text('data',$perintah)?>
-            </div>
-            </div>
+			<?php
+			$dataperintah="";
+      ?>
+			<form>
+      <div class="col-md-5">
+        <input name='dataperintah'  id="dataperintah" value =<?=input_text('dataperintah',$dataperintah)?>>
+        <input name='id_perintah'  id="id_perintah" value = "0">
+			</form>
+			<div id="autoSave"></div>
+		</div>
+	</div>
+</div>
+
     </div>         
   </header>
 </body>
