@@ -30,11 +30,32 @@
 			$dataperintah="";
       ?>
 			<form>
-      <div class="col-md-5">
-        <input name='dataperintah'  id="dataperintah" value =<?=input_text('dataperintah',$dataperintah)?>>
-        <input name='id_perintah'  id="id_perintah" value = "0">
+      <div class="form-group invisible">
+        <input name='dataperintah'  style ="height:5px" id="dataperintah" value =<?=input_text('dataperintah',$dataperintah)?>>
+        <input name='id_perintah'  style ="height:5px" id="id_perintah" value = "0">
 			</form>
 			<div id="autoSave"></div>
+
+      <?php
+			$dataperintah1="";
+      ?>
+			<form>
+      <div class="form-group invisible">
+        <input name='dataperintah1'  style ="height:5px" id="dataperintah1" value =<?=input_text('dataperintah1',$dataperintah1)?>>
+        <input name='id_perintah'  style ="height:5px" id="id_perintah" value = "0">
+			</form>
+			<div id="autoSave1"></div>
+
+      <?php
+			$dataperintah2="";
+      ?>
+			<form>
+      <div class="form-group invisible">
+        <input name='dataperintah2'  style ="height:5px" id="dataperintah2" value =<?=input_text('dataperintah2',$dataperintah2)?>>
+        <input name='id_perintah'  style ="height:5px" id="id_perintah" value = "0">
+			</form>
+			<div id="autoSave2"></div>
+
 		</div>
 	</div>
 </div>

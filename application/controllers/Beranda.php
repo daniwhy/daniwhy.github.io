@@ -95,6 +95,33 @@ class Beranda  extends CI_Controller {
 			}
 		}
 	
+	public function bacaperintah1(){
+		$this->load->model('perintahModels1');
+
+		$dataperintah1 = $this->perintahModels1->ambildataperintah();
+
+		foreach ($dataperintah1 as $key => $value) {
+			if ($value->dataperintah1 == 5){
+				echo "ON";
+			}
+			else 
+				echo "OFF";
+			}
+		}
+	
+	public function bacaperintah2(){
+		$this->load->model('perintahModels2');
+
+		$dataperintah2 = $this->perintahModels2->ambildataperintah();
+
+		foreach ($dataperintah2 as $key => $value) {
+			if ($value->dataperintah2 == 5){
+				echo "ON";
+			}
+			else 
+				echo "OFF";
+			}
+		}
 	public function autosave()
 	  {
 	  	$this->load->model('perintahModels');
@@ -108,6 +135,36 @@ class Beranda  extends CI_Controller {
 	  		}
 	  		redirect();
 	  		var_dump($dataperintah);
+	}
+
+	public function autosave1()
+	  {
+	  	$this->load->model('perintahModels1');
+	  	if($this->input->post()){
+	 		$dataperintah1=[
+	  			'id_perintah'=>$this->input->post('id_perintah'),
+	  			'dataperintah1'=>$this->input->post('dataperintah1'),
+	  		];
+	  			$this->perintahModels1->update($dataperintah1,['id_perintah'=>$this->input->post('id_perintah')]);
+				 
+	  		}
+	  		redirect();
+	  		//var_dump($dataperintah);
+	}
+
+	public function autosave2()
+	  {
+	  	$this->load->model('perintahModels2');
+	  	if($this->input->post()){
+	 		$dataperintah2=[
+	  			'id_perintah'=>$this->input->post('id_perintah'),
+	  			'dataperintah2'=>$this->input->post('dataperintah2'),
+	  		];
+	  			$this->perintahModels2->update($dataperintah2,['id_perintah'=>$this->input->post('id_perintah')]);
+				 
+	  		}
+	  		redirect();
+	  		//var_dump($dataperintah);
 	}
 }
 	

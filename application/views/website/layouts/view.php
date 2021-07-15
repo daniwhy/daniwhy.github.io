@@ -18,7 +18,7 @@
 					document.getElementById('id_perintah').value=response;
 					document.getElementById('dataperintah').value=response;	
 					}
-					document.getElementById('autoSave').innerHTML="Notes  Saved.";
+					document.getElementById('autoSave').innerHTML="";
 				
 				}
 			});
@@ -29,6 +29,66 @@
 	},10000);
 		setInterval(function(){
 						document.getElementById('autoSave').innerHTML="";
+					},35000);
+
+	function autoSave1()
+	{
+		var dataperintah1 = document.getElementById('dataperintah1').value;
+		var id_perintah = document.getElementById('id_perintah').value;
+		if(id_perintah!='')
+		{
+			$.ajax({
+				url:'beranda/autosave1',
+				method:"post",
+				data:{dataperintah1 : dataperintah1,id_perintah : id_perintah},
+				success:function(response)
+				{
+					if(response!='')
+					{
+					document.getElementById('id_perintah').value=response;
+					document.getElementById('dataperintah1').value=response;	
+					}
+					document.getElementById('autoSave1').innerHTML="";
+				
+				}
+			});
+		}
+	}
+	setInterval(function(){
+		autoSave1();
+	},10000);
+		setInterval(function(){
+						document.getElementById('autoSave1').innerHTML="";
+					},35000);
+
+	function autoSave2()
+	{
+		var dataperintah2 = document.getElementById('dataperintah2').value;
+		var id_perintah = document.getElementById('id_perintah').value;
+		if(id_perintah!='')
+		{
+			$.ajax({
+				url:'beranda/autosave2',
+				method:"post",
+				data:{dataperintah2 : dataperintah2,id_perintah : id_perintah},
+				success:function(response)
+				{
+					if(response!='')
+					{
+					document.getElementById('id_perintah').value=response;
+					document.getElementById('dataperintah2').value=response;	
+					}
+					document.getElementById('autoSave2').innerHTML="";
+				
+				}
+			});
+		}
+	}
+	setInterval(function(){
+		autoSave2();
+	},10000);
+		setInterval(function(){
+						document.getElementById('autoSave2').innerHTML="";
 					},35000);
 
 		function showTime() {

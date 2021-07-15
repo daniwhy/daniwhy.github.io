@@ -12,6 +12,7 @@
     <script src="<?=templates('build/js/custom.min.js')?>"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.js"></script>
     <script type="text/javascript">
+    
         $.extend( $.fn.dataTable.defaults, {
           "bJQueryUI": false,
           "bAutoWidth": false,

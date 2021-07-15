@@ -19,6 +19,8 @@ var dark = L.tileLayer(mbUrl, {id: 'mapbox/dark-v9', tileSize: 512, zoomOffset: 
 var markersLayers = new L.LayerGroup();
 
 	var kode1=document.querySelector("[name=dataperintah]");
+	var kode2=document.querySelector("[name=dataperintah1]");
+	var kode3=document.querySelector("[name=dataperintah2]");
    	var map = L.map('map',{layers:dark}).setView([-7.2718983,112.7497418], 12.5);
 	var myStyle2 = {
 	    "color": "#ffff00",
@@ -57,7 +59,6 @@ var kodeCuaca = {
 	L.geoJSON(data1,{
 		pointToLayer: function (feature, latlng, kategori) {
 	    	//console.log(feature)
-			console.log(feature.kategori.kategori);
 			kode1.value=feature.kategori.kategori;
 	        return marker=L.marker(latlng, {icon: L.icon ({
 		    iconUrl:'assets/icons/'+kodeCuaca[(feature.kategori.kategori)],
@@ -81,6 +82,7 @@ var kodeCuaca = {
 	L.geoJSON(data2,{
 		pointToLayer: function (feature, latlng, kategori) {
 	    	//console.log(feature)
+			kode2.value=feature.kategori.kategori;
 	        return marker=L.marker(latlng, {icon:L.icon ({
 		    iconUrl: 'assets/icons/'+kodeCuaca[(feature.kategori.kategori)],
 		    iconSize: [100, 100],
@@ -102,6 +104,7 @@ var kodeCuaca = {
 	L.geoJSON(data3,{
 		pointToLayer: function (feature, latlng, kategori) {
 	    	//console.log(feature)
+			kode3.value=feature.kategori.kategori;
 	        return marker=L.marker(latlng, {icon: L.icon ({
 		    iconUrl: 'assets/icons/'+kodeCuaca[(feature.kategori.kategori)],
 		    iconSize: [100, 100],

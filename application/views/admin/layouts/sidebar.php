@@ -32,6 +32,7 @@
                    </li>
                   <?php } ?>
                   <li><a href="<?=site_url('admin/map')?>"><i class="fa fa-map"></i> Maps </span></a>
+                  <li><a href="<?=site_url('admin/download/index')?>"><i class="fa fa-database"></i> Download Data </span></a>
                   <li><a href="<?=site_url('admin/auth/out')?>"><i class="fa fa-sign-out"></i> Keluar</a></li>
                 </ul>
               </div>
