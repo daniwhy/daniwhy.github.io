@@ -8,6 +8,8 @@ class Beranda  extends CI_Controller {
 	$this->load->model('data1Models','Model');
 	$this->load->model('data2Models','Model');
 	$this->load->model('data3Models','Model');
+
+	
 	
 	}
 
@@ -87,7 +89,7 @@ class Beranda  extends CI_Controller {
 		$dataperintah = $this->perintahModels->ambildataperintah();
 
 		foreach ($dataperintah as $key => $value) {
-			if ($value->dataperintah == 5){
+			if ($value->dataperintah > 5){
 				echo "ON";
 			}
 			else 
@@ -101,7 +103,7 @@ class Beranda  extends CI_Controller {
 		$dataperintah1 = $this->perintahModels1->ambildataperintah();
 
 		foreach ($dataperintah1 as $key => $value) {
-			if ($value->dataperintah1 == 5){
+			if ($value->dataperintah1 > 5){
 				echo "ON";
 			}
 			else 
@@ -115,7 +117,7 @@ class Beranda  extends CI_Controller {
 		$dataperintah2 = $this->perintahModels2->ambildataperintah();
 
 		foreach ($dataperintah2 as $key => $value) {
-			if ($value->dataperintah2 == 5){
+			if ($value->dataperintah2 > 5){
 				echo "ON";
 			}
 			else 
@@ -166,5 +168,61 @@ class Beranda  extends CI_Controller {
 	  		redirect();
 	  		//var_dump($dataperintah);
 	}
+	public function sendemail()
+    {
+		$this->load->model('SubsModels');
+		$query = $this->db->get('subscribe');
+		$result = $query->result_array();
+		// if ($query->num_rows())
+		// {
+		// 	/*for multiple array*/
+		 
+		// 	$result = $query->result_array();
+		// 	/*for single array
+		// 	$row = $query->row_array();
+		// 	*/
+		// }
+		foreach($result as $key =>$row)
+		{
+			$dataa = implode (" ",$row);
+    	echo $dataa;
+		}
+        $this->load->library('phpmailer_lib');
+        // PHPMailer object
+        $mail = $this->phpmailer_lib->load();
+        // SMTP configuration
+        $mail->isSMTP();
+        $mail->Host     = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'webcuaca.alert@gmail.com';
+        $mail->Password = 'Dani11121997';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port     = 587;
+		
+
+        $mail->setFrom('webcuaca.alert@gmail.com', 'WEBCUACA ALERT');
+
+        // email tujuan mu
+       	$mail->addAddress($dataa);
+
+        // Attracmhent File
+
+        // Email subject
+        $mail->Subject = 'ALERT';
+
+        // Set email format to HTML
+        // $mail->isHTML(true);
+
+        // Email body content / isi
+        $mail->Body = 'PERINGATAN BAHAYA !!! Prakiraan Cuaca Hujan Lebat. Untuk informasi lebih lanjut klik http://webcuaca.airsensormonitoring.online/';
+
+        // Send email
+        if(!$mail->send()){
+            echo "email terkirim";
+        }else{
+			echo "email gagal terkirim";
+      }
+	}
+    
 }
 	

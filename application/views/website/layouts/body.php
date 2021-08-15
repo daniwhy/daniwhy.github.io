@@ -11,7 +11,7 @@
             <p class="m-0 p-0" style="font-size: 14px;margin-top:-5px !important">INFORMATION & FORECASTING</p>
           </div>   
          
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler invisible" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -20,8 +20,9 @@
             <ul class="nav navbar-nav menu_nav justify-content-end">
             
               <li class="nav-item" style="font-size: 20px;margin-left:100px" id="clock"></li> 
+              
          <div class="nav-right text-center text-lg-right py-4 py-lg-0">
-              <a class="button" style="margin-top:-10px;margin-left:370px !important" href="<?=site_url('admin')?>">Log In</a>
+              <a class="button" style="margin-top:-10px;margin-left:310px !important" href="<?=site_url('admin')?>">Subscribe</a>
             </div>
           </div> 
         </div>
@@ -56,10 +57,12 @@
 			</form>
 			<div id="autoSave2"></div>
 
+      
 		</div>
 	</div>
 </div>
 
     </div>         
   </header>
+  
 </body>

@@ -57,5 +57,18 @@ class Auth extends CI_Controller {
 		$this->session->sess_destroy();
 		redirect("admin/auth");
 	}
+	function simpan(){
+		$this->load->model('SubsModels','Model');
+		$email = $this->input->post('email');
+ 
+		$data = array(
+			'email' => $email,
+			);
+		$this->Model->insert($data);
+		$this->session->set_flashdata("info",'<div class="alert alert-success alert-dismissible">
+		                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+		                    <h4><i class="icon fa fa-ban"></i> Sukses!</h4> Subscribe Berhasil !
+		                  </div>');
+		redirect("admin/auth");
+	}
 }
-

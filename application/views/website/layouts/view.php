@@ -121,4 +121,5 @@
 		    return i;
 		}
 		setInterval(showTime, 500);
+
 </script>

@@ -36,7 +36,6 @@ var markersLayers = new L.LayerGroup();
 L.control.layers(baseLayers).addTo(map);
 var kodeCuaca = {
 	'1':['clearskies.png'],
-	'2':['mostlycloudy.png'],
 	'3':['lightrain.png'],
 	'4':['rain.png'],
 	'5':['heavyrain.png'],
@@ -127,8 +126,8 @@ var kodeCuaca = {
 legend.onAdd = function (map) {
 
     var div = L.DomUtil.create('div', 'info legend'),
-        grades = ["Cerah", "Berawan","Hujan Ringan","Hujan Sedang","Hujan Lebat"],
-        labels = ["assets/icons/clearskies.png","assets/icons/mostlycloudy.png","assets/icons/lightrain.png","assets/icons/rain.png","assets/icons/heavyrain.png"];
+        grades = ["Cerah","Hujan Ringan","Hujan Sedang","Hujan Lebat"],
+        labels = ["assets/icons/clearskies.png","assets/icons/lightrain.png","assets/icons/rain.png","assets/icons/heavyrain.png"];
 
     // loop through our density intervals and generate a label with a colored square for each interval
     for (var i = 0; i < grades.length; i++) {
@@ -142,3 +141,4 @@ legend.onAdd = function (map) {
 legend.addTo(map);
 
    </script>
+   

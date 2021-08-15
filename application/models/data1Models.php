@@ -6,5 +6,4 @@ class data1Models extends CI_Model{
 		$data=$this->db->get('data1');
 		return $data;
 	}
-	
 }

@@ -49,7 +49,7 @@
                 <section class="">
                   <form action="<?=site_url('admin/auth/check')?>" method="POST">
                     <h2 class="text-danger"><i class="fa fa-cloud"></i> WEATHER INFORMATION!</h2>
-                    <h1>Login Form</h1>
+                    <h2>Login Form Just for Admin</h2>
                     <?=$this->session->flashdata('info')?>
                     <div class="form-group">
                       <label>Username</label>
@@ -66,14 +66,18 @@
                     <div class="clearfix"></div>
                     <div>
                   <a href="<?=site_url('')?>"  style="width:315px" class="btn btn-danger" ><i class="fa fa-reply"></i>  Kembali</a> 
-                  
-                  </div>
-                    </form>
-                  
-                    <div>
-                        <p>©2020 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Image By <a href="https://www.freepik.com/free-vector/concept-protected-access-control-lock-with-key-data-security_4102302.htm" target="_BLANK">Freepik</a></p>
-                      </div>
+                  </form>	
                 </section>
+                <form action="<?php echo base_url(). 'admin/auth/simpan'; ?>" method="post">
+		                <div class="form-group">
+                    <h2>Subscribe for Weather Alert</h2>
+                       <input type="text" class="form-control" placeholder="Enter Email Here" name="email" required="" />
+                    </div>
+                    <div>
+                      <button type="submit" class="btn btn-primary btn-block submit">Submit</button>
+                    </div>
+	              </form>	
+                    
               </div>
             </div>
           </div>
@@ -82,5 +86,6 @@
         <div class="col-md-6 d-xs-none">
           <img src="<?=assets('images/orang.png')?>" width="80%">
         </div>
+        
   </body>
 </html>
